@@ -1,0 +1,32 @@
+{
+  "name": "vscode-terminal-aquarium",
+  "displayName": "Terminal Pixel Aquarium",
+  "description": "Un aquarium 2D pixel art interactif (poissons, plantes, roches, sol technique) directement en fond du terminal VS Code.",
+  "version": "1.0.0",
+  "publisher": "EnzoSCH1",
+  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnzoSCH1/vscode-terminal-aquarium.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Themes", "Other"],
+  "keywords": ["aquarium", "terminal", "pixel art", "background", "aquascape", "fish"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "terminalAquarium.install",
+        "title": "Aquarium Terminal : Activer / Mettre à jour le fond"
+      },
+      {
+        "command": "terminalAquarium.uninstall",
+        "title": "Aquarium Terminal : Désactiver le fond"
+      }
+    ]
+  }
+}
