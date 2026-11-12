@@ -27,7 +27,7 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 |---|---|
 | 🐠 **32 espèces de poissons** | Poisson-clown, chirurgien bleu, combattant, poisson rouge, koï, poisson-lion, baudroie, poisson-lune… chacun avec sa queue animée. Néons et sardines nagent en banc, les clowns restent près de leur anémone. |
 | 🐙 **22 autres animaux** | Hippocampe, tortue, méduse, pieuvre, axolotl, manchot, dauphin, narval, bébé baleine, un plongeur qui fait des bulles, crabes, homard, limace de mer… et un bébé requin qui fait fuir tout le monde. |
-| 🪸 **35 décors** | Kelp et algues qui ondulent, 10 coraux, épave, phare, statue moaï, château de sable, maison champignon, ruines, coffre au trésor, ancre, amphore, cristaux… |
+| 🌿 **35 décors** | Kelp et algues qui ondulent, 10 coraux, épave, phare, statue moaï, château de sable, maison champignon, ruines, coffre au trésor, ancre, amphore, cristaux… |
 | 🍤 **Il réagit à ce que vous faites** | Appuyez sur <kbd>Entrée</kbd> dans le terminal : de la nourriture tombe. Les poissons se précipitent, les animaux du fond ramassent ce qui atteint le sable, et tout le monde s'écarte quand le curseur approche. |
 | 🎲 **Jamais le même aquarium** | Chaque nouveau décor tire un mélange différent de grands décors, de coraux, de poissons et d'animaux. Ou composez le vôtre, clic après clic. |
 | ⌨️ **Il ne gêne pas** | L'aquarium est une couche transparente : le texte du terminal reste net et entièrement utilisable. Un clic suffit pour le masquer. |
