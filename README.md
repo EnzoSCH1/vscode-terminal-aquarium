@@ -27,7 +27,7 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 |---|---|
 | 🐠 **32 fish species** | Clownfish, blue tang, betta, goldfish, koi, lionfish, anglerfish, sunfish… each with an animated tail. Neon tetras and sardines swim in schools, clownfish stay close to their anemone. |
 | 🐙 **22 other animals** | Seahorse, turtle, jellyfish, octopus, axolotl, penguin, dolphin, narwhal, baby whale, a scuba diver blowing bubbles, crabs, lobster, sea slug… and a baby shark that scares everyone else. |
-| 🪸 **35 decorations** | Swaying kelp and seaweed, 10 corals, shipwreck, lighthouse, moai statue, sandcastle, mushroom house, ruins, treasure chest, anchor, amphora, crystals… |
+| 🌿 **35 decorations** | Swaying kelp and seaweed, 10 corals, shipwreck, lighthouse, moai statue, sandcastle, mushroom house, ruins, treasure chest, anchor, amphora, crystals… |
 | 🍤 **It reacts to you** | Press <kbd>Enter</kbd> in the terminal and food drops in. Fish race for it, bottom-dwellers pick up what reaches the sand, and everyone scatters when your cursor gets close. |
 | 🎲 **Never the same tank** | Every new scene draws a different mix of landmarks, corals, fish and animals. Or build your own, one click at a time. |
 | ⌨️ **Stays out of your way** | The aquarium is a see-through layer: your terminal text stays crisp and fully usable. Hide it in one click. |
