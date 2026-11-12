@@ -1,0 +1,6 @@
+art/**
+tools/**
+images/**
+*.vsix
+.git/**
+.gitignore
