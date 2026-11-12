@@ -180,6 +180,26 @@ def pixelize(crop, mode, size):
     neigh = sum(p8[1 + dy:p8.shape[0] - 1 + dy, 1 + dx:p8.shape[1] - 1 + dx]
                 for dy in (-1, 0, 1) for dx in (-1, 0, 1) if (dy, dx) != (0, 0))
     opaque &= neigh > 0
+    # ... et les miettes de moins de 4 pixels detachees du sprite
+    seen = np.zeros_like(opaque)
+    for y0 in range(th):
+        for x0 in range(tw):
+            if not opaque[y0, x0] or seen[y0, x0]:
+                continue
+            comp, stack = [], [(y0, x0)]
+            seen[y0, x0] = True
+            while stack:
+                cy, cx = stack.pop()
+                comp.append((cy, cx))
+                for dy in (-1, 0, 1):
+                    for dx in (-1, 0, 1):
+                        ny, nx = cy + dy, cx + dx
+                        if 0 <= ny < th and 0 <= nx < tw and opaque[ny, nx] and not seen[ny, nx]:
+                            seen[ny, nx] = True
+                            stack.append((ny, nx))
+            if len(comp) < 4:
+                for cy, cx in comp:
+                    opaque[cy, cx] = False
     rgb = np.where(al[..., None] > 0, s[..., :3] / np.maximum(al[..., None], 1e-3), 0)
     rgb = np.clip(rgb, 0, 255)
     # palette reduite, sans tramage : aplats nets facon pixel art
