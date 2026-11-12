@@ -29,6 +29,13 @@ CREATURES2 = ["whale", "narwhal", "dolphin", "squid", "cuttlefish", "lobster", "
 DECOR2 = ["sandcastle", "anchor", "amphora", "helmet", "bottle", "moai", "barrel", "conch",
           "staghorn", "tablecoral", "mushcoral", "crystal", "arch", "driftwood", "seawhip", "lighthouse"]
 
+FISH3 = ["cowfish", "emperor", "clowntrigger", "powdertang", "foxface", "pajama", "longnose", "chromis",
+         "tusk", "arowana", "tigerbarb", "molly", "ram", "damsel", "orca", "seal"]
+PLANTS3 = ["goldkelp", "purpleweed", "tealfern", "cabomba", "redfern", "eelgrass", "grapealgae", "blossom",
+           "elkhorn", "bubblecoral", "suncoral", "torch", "carnation", "pillar", "acropora", "zoa"]
+DECOR3 = ["torii", "pagoda", "volcano", "submarine", "wheel", "cannon", "lantern", "skull",
+          "tiki", "ufo", "bridge", "tower", "signpost", "boot", "shellhouse", "treasure"]
+
 # Taille cible en pixels logiques : ("w", largeur) ou ("h", hauteur), une ou plusieurs variantes.
 SIZES = {
     "clown": [("w", 34)], "tang": [("w", 38)], "ytang": [("w", 34)], "idol": [("w", 36)],
@@ -77,9 +84,65 @@ SIZES = {
     "driftwood": [("h", 58), ("h", 42)],
     "seawhip": [("h", 46), ("h", 34), ("h", 24)],
     "lighthouse": [("h", 64), ("h", 48)],
+    "cowfish": [("w", 36)],
+    "emperor": [("w", 38)],
+    "clowntrigger": [("w", 38)],
+    "powdertang": [("w", 38)],
+    "foxface": [("w", 36)],
+    "pajama": [("w", 32)],
+    "longnose": [("w", 40)],
+    "chromis": [("w", 28)],
+    "tusk": [("w", 36)],
+    "arowana": [("w", 46)],
+    "tigerbarb": [("w", 30)],
+    "molly": [("w", 32)],
+    "ram": [("w", 34)],
+    "damsel": [("w", 30)],
+    "orca": [("w", 64)],
+    "seal": [("w", 50)],
+    "goldkelp": [("h", 70), ("h", 52), ("h", 36)],
+    "purpleweed": [("h", 56), ("h", 42), ("h", 30)],
+    "tealfern": [("h", 56), ("h", 42), ("h", 30)],
+    "cabomba": [("h", 60), ("h", 44), ("h", 32)],
+    "redfern": [("h", 52), ("h", 38), ("h", 28)],
+    "eelgrass": [("h", 50), ("h", 36), ("h", 26)],
+    "grapealgae": [("h", 44), ("h", 32), ("h", 24)],
+    "blossom": [("h", 44), ("h", 32), ("h", 24)],
+    "elkhorn": [("h", 34), ("h", 25)],
+    "bubblecoral": [("h", 30), ("h", 22)],
+    "suncoral": [("h", 30), ("h", 22)],
+    "torch": [("h", 32), ("h", 24)],
+    "carnation": [("h", 38), ("h", 28)],
+    "pillar": [("h", 34), ("h", 25)],
+    "acropora": [("h", 36), ("h", 26)],
+    "zoa": [("h", 28), ("h", 21)],
+    "torii": [("h", 56), ("h", 42)],
+    "pagoda": [("h", 52), ("h", 38)],
+    "volcano": [("h", 44), ("h", 32)],
+    "submarine": [("h", 44), ("h", 32)],
+    "wheel": [("h", 40), ("h", 30)],
+    "cannon": [("h", 32), ("h", 24)],
+    "lantern": [("h", 34), ("h", 26)],
+    "skull": [("h", 40), ("h", 30)],
+    "tiki": [("h", 44), ("h", 32)],
+    "ufo": [("h", 34), ("h", 26)],
+    "bridge": [("h", 36), ("h", 27)],
+    "tower": [("h", 56), ("h", 42)],
+    "signpost": [("h", 38), ("h", 28)],
+    "boot": [("h", 30), ("h", 22)],
+    "shellhouse": [("h", 40), ("h", 30)],
+    "treasure": [("h", 30), ("h", 22)],
+    "reef": [("h", 96), ("h", 68), ("h", 46)],
+}
+# Parties retirees du dessin : (u0, u1, v0, v1) en fraction de la largeur / hauteur du sprite.
+ERASE = {
+    "whale": [(0.45, 0.88, 0.0, 0.279)],                          # jet d'eau
+    "diver": [(0.79, 1.0, 0.0, 0.185), (0.83, 1.0, 0.0, 0.21), (0.865, 1.0, 0.0, 0.33)],   # bulles au-dessus de la tete
 }
 COLORS = 28
 INK = np.array([14, 18, 46], dtype=np.float32)
+WATER_HAZE = np.array([77, 171, 247], dtype=np.float32)
+BACKDROPS = {"reef"}
 
 
 def load(name, key_magenta):
@@ -162,7 +225,7 @@ def split(a, rows, cols):
     return cells
 
 
-def pixelize(crop, mode, size):
+def pixelize(crop, mode, size, backdrop=False):
     h, w = crop.shape[:2]
     if mode == "w":
         tw, th = size, max(1, round(h * size / w))
@@ -203,14 +266,20 @@ def pixelize(crop, mode, size):
     rgb = np.where(al[..., None] > 0, s[..., :3] / np.maximum(al[..., None], 1e-3), 0)
     rgb = np.clip(rgb, 0, 255)
     # palette reduite, sans tramage : aplats nets facon pixel art
-    q = Image.fromarray(rgb.astype(np.uint8), "RGB").quantize(COLORS, method=Image.MEDIANCUT, dither=Image.NONE).convert("RGB")
+    q = Image.fromarray(rgb.astype(np.uint8), "RGB").quantize(48 if backdrop else COLORS, method=Image.MEDIANCUT, dither=Image.NONE).convert("RGB")
     rgb = np.array(q).astype(np.float32)
     # contour : les pixels du bord sont tires vers l'encre
     pad = np.pad(opaque, 1)
     edge = opaque & ~(pad[:-2, 1:-1] & pad[2:, 1:-1] & pad[1:-1, :-2] & pad[1:-1, 2:])
     lum = rgb.mean(axis=2)
-    k = np.where(edge, np.where(lum < 90, 0.85, 0.6), 0)[..., None]
-    rgb = rgb * (1 - k) + INK * k
+    if backdrop:
+        # decor lointain : pas de contour sombre, et une brume bleue qui le repousse au fond
+        # retire la teinte mauve laissee par le fond magenta de la planche : tout reste bleu
+        rgb[..., 0] = np.minimum(rgb[..., 0], rgb[..., 1] * 0.9)
+        rgb = rgb * 0.72 + WATER_HAZE * 0.28
+    else:
+        k = np.where(edge, np.where(lum < 90, 0.85, 0.6), 0)[..., None]
+        rgb = rgb * (1 - k) + INK * k
     out = np.zeros((th, tw, 4), dtype=np.uint8)
     out[..., :3] = rgb.astype(np.uint8)
     out[..., 3] = np.where(opaque, 255, 0)
@@ -220,12 +289,18 @@ def pixelize(crop, mode, size):
 def main():
     sprites = {}
     sheets = [("fish.png", None, 4, 4, FISH), ("creatures.png", None, 3, 4, CREATURES), ("decor.png", None, 4, 4, DECOR),
-              ("fish2.png", None, 4, 4, FISH2), ("creatures2.png", None, 3, 4, CREATURES2), ("decor2.png", None, 4, 4, DECOR2)]
+              ("fish2.png", None, 4, 4, FISH2), ("creatures2.png", None, 3, 4, CREATURES2), ("decor2.png", None, 4, 4, DECOR2),
+              ("reef.png", None, 1, 1, ["reef"]),
+              ("fish3.png", None, 4, 4, FISH3), ("plants3.png", None, 4, 4, PLANTS3), ("decor3.png", None, 4, 4, DECOR3)]
     for fname, key, rows, cols, names in sheets:
         cells = split(load(fname, key), rows, cols)
         for name, crop in zip(names, cells):
+            # zones effacees du dessin d'origine (la taille du sprite ne change pas)
+            for (u0, u1, v0, v1) in ERASE.get(name, []):
+                ch, cw = crop.shape[:2]
+                crop[int(v0 * ch):int(v1 * ch), int(u0 * cw):int(u1 * cw), 3] = 0
             for i, (mode, size) in enumerate(SIZES[name]):
-                sprites[name if len(SIZES[name]) == 1 else "%s_%d" % (name, i)] = pixelize(crop, mode, size)
+                sprites[name if len(SIZES[name]) == 1 else "%s_%d" % (name, i)] = pixelize(crop, mode, size, name in BACKDROPS)
 
     # rangement en etageres
     aw = 512

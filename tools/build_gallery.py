@@ -21,14 +21,20 @@ BG_BOTTOM = (74, 152, 240)
 FISH = ["clown", "tang", "ytang", "idol", "butterfly", "neon", "gramma", "snapper",
         "koi", "puffer", "grouper", "angel", "discus", "wrasse", "mandarin", "lion",
         "betta", "goldfish", "guppy", "scalare", "parrot", "trigger", "boxfish", "cardinal",
-        "flameangel", "cory", "angler", "piranha", "swordtail", "mola", "seadragon", "sardine"]
+        "flameangel", "cory", "angler", "piranha", "swordtail", "mola", "seadragon", "sardine",
+        "cowfish", "emperor", "clowntrigger", "powdertang", "foxface", "pajama", "longnose", "chromis",
+        "tusk", "arowana", "tigerbarb", "molly", "ram", "damsel"]
 ANIMALS = ["seahorse", "turtle", "jelly", "octopus", "squid", "cuttlefish", "axolotl", "penguin",
-           "ray", "manta", "diver", "dolphin", "narwhal", "whale", "shark",
+           "ray", "manta", "diver", "seal", "dolphin", "narwhal", "orca", "whale", "shark",
            "crab", "hermit", "lobster", "shrimp", "snail", "nudibranch", "urchin"]
 DECOR = ["ship", "lighthouse", "moai", "sandcastle", "mushroom", "column", "arch", "driftwood",
          "chest", "barrel", "anchor", "amphora", "helmet", "crystal", "rock", "clam", "conch", "bottle", "star",
          "kelp", "redweed", "blade", "seawhip", "anemone", "grass",
-         "branch", "pinkcoral", "staghorn", "flame", "fan", "tube", "brain", "tablecoral", "mushcoral"]
+         "branch", "pinkcoral", "staghorn", "flame", "fan", "tube", "brain", "tablecoral", "mushcoral",
+         "torii", "pagoda", "tower", "volcano", "submarine", "bridge", "tiki", "shellhouse", "skull",
+         "wheel", "cannon", "lantern", "ufo", "signpost", "boot", "treasure",
+         "goldkelp", "cabomba", "purpleweed", "tealfern", "redfern", "eelgrass", "grapealgae", "blossom",
+         "elkhorn", "acropora", "carnation", "pillar", "torch", "bubblecoral", "suncoral", "zoa"]
 
 
 def load_atlas():

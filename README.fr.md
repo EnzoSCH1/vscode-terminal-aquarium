@@ -25,9 +25,9 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 
 | | |
 |---|---|
-| 🐠 **32 espèces de poissons** | Poisson-clown, chirurgien bleu, combattant, poisson rouge, koï, poisson-lion, baudroie, poisson-lune… chacun avec sa queue animée. Néons et sardines nagent en banc, les clowns restent près de leur anémone. |
-| 🐙 **22 autres animaux** | Hippocampe, tortue, méduse, pieuvre, axolotl, manchot, dauphin, narval, bébé baleine, un plongeur qui fait des bulles, crabes, homard, limace de mer… et un bébé requin qui fait fuir tout le monde. |
-| 🌿 **35 décors** | Kelp et algues qui ondulent, 10 coraux, épave, phare, statue moaï, château de sable, maison champignon, ruines, coffre au trésor, ancre, amphore, cristaux… |
+| 🐠 **46 espèces de poissons** | Poisson-clown, chirurgien bleu, combattant, poisson rouge, koï, poisson-lion, baudroie, poisson-lune… chacun avec sa queue animée. Néons et sardines nagent en banc, les clowns restent près de leur anémone. |
+| 🐙 **24 autres animaux** | Hippocampe, tortue, méduse, pieuvre, axolotl, manchot, dauphin, narval, bébé baleine, bébé orque, bébé phoque, un plongeur qui fait des bulles, crabes, homard, limace de mer… et un bébé requin qui fait fuir tout le monde. |
+| 🌿 **67 décors** | 13 plantes qui ondulent, 18 coraux, épave, phare, statue moaï, portail torii, volcan, sous-marin jaune, tour en ruine, château de sable, maison champignon, coffre au trésor, canon, soucoupe volante… |
 | 🍤 **Il réagit à ce que vous faites** | Appuyez sur <kbd>Entrée</kbd> dans le terminal : de la nourriture tombe. Les poissons se précipitent, les animaux du fond ramassent ce qui atteint le sable, et tout le monde s'écarte quand le curseur approche. |
 | 🎲 **Jamais le même aquarium** | Chaque nouveau décor tire un mélange différent de grands décors, de coraux, de poissons et d'animaux. Ou composez le vôtre, clic après clic. |
 | ⌨️ **Il ne gêne pas** | L'aquarium est une couche transparente : le texte du terminal reste net et entièrement utilisable. Un clic suffit pour le masquer. |
@@ -49,21 +49,21 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 ## Les habitants
 
 <details open>
-<summary><b>Poissons</b> (32)</summary>
+<summary><b>Poissons</b> (46)</summary>
 
 ![Toutes les espèces de poissons](images/gallery-fish.png)
 
 </details>
 
 <details>
-<summary><b>Animaux</b> (22)</summary>
+<summary><b>Animaux</b> (24)</summary>
 
 ![Tous les animaux](images/gallery-animals.png)
 
 </details>
 
 <details>
-<summary><b>Plantes, coraux et décors</b> (35)</summary>
+<summary><b>Plantes, coraux et décors</b> (67)</summary>
 
 ![Tous les décors](images/gallery-decor.png)
 

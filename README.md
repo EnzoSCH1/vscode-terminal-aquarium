@@ -25,9 +25,9 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 
 | | |
 |---|---|
-| 🐠 **32 fish species** | Clownfish, blue tang, betta, goldfish, koi, lionfish, anglerfish, sunfish… each with an animated tail. Neon tetras and sardines swim in schools, clownfish stay close to their anemone. |
-| 🐙 **22 other animals** | Seahorse, turtle, jellyfish, octopus, axolotl, penguin, dolphin, narwhal, baby whale, a scuba diver blowing bubbles, crabs, lobster, sea slug… and a baby shark that scares everyone else. |
-| 🌿 **35 decorations** | Swaying kelp and seaweed, 10 corals, shipwreck, lighthouse, moai statue, sandcastle, mushroom house, ruins, treasure chest, anchor, amphora, crystals… |
+| 🐠 **46 fish species** | Clownfish, blue tang, betta, goldfish, koi, lionfish, anglerfish, sunfish… each with an animated tail. Neon tetras and sardines swim in schools, clownfish stay close to their anemone. |
+| 🐙 **24 other animals** | Seahorse, turtle, jellyfish, octopus, axolotl, penguin, dolphin, narwhal, baby whale, baby orca, baby seal, a scuba diver blowing bubbles, crabs, lobster, sea slug… and a baby shark that scares everyone else. |
+| 🌿 **67 decorations** | 13 swaying plants, 18 corals, shipwreck, lighthouse, moai statue, torii gate, volcano, yellow submarine, castle tower, sandcastle, mushroom house, treasure chest, cannon, flying saucer… |
 | 🍤 **It reacts to you** | Press <kbd>Enter</kbd> in the terminal and food drops in. Fish race for it, bottom-dwellers pick up what reaches the sand, and everyone scatters when your cursor gets close. |
 | 🎲 **Never the same tank** | Every new scene draws a different mix of landmarks, corals, fish and animals. Or build your own, one click at a time. |
 | ⌨️ **Stays out of your way** | The aquarium is a see-through layer: your terminal text stays crisp and fully usable. Hide it in one click. |
@@ -49,21 +49,21 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 ## Meet the residents
 
 <details open>
-<summary><b>Fish</b> (32)</summary>
+<summary><b>Fish</b> (46)</summary>
 
 ![All fish species](images/gallery-fish.png)
 
 </details>
 
 <details>
-<summary><b>Animals</b> (22)</summary>
+<summary><b>Animals</b> (24)</summary>
 
 ![All animals](images/gallery-animals.png)
 
 </details>
 
 <details>
-<summary><b>Plants, corals and decorations</b> (35)</summary>
+<summary><b>Plants, corals and decorations</b> (67)</summary>
 
 ![All decorations](images/gallery-decor.png)
 
