@@ -36,6 +36,10 @@ PLANTS3 = ["goldkelp", "purpleweed", "tealfern", "cabomba", "redfern", "eelgrass
 DECOR3 = ["torii", "pagoda", "volcano", "submarine", "wheel", "cannon", "lantern", "skull",
           "tiki", "ufo", "bridge", "tower", "signpost", "boot", "shellhouse", "treasure"]
 
+UI = ["ui_pointer", "ui_eraser", "ui_pellets", "ui_trash", "ui_pause", "ui_play", "ui_plus", "ui_dice",
+      "ui_gear", "ui_jar", "ui_wand", "ui_eye"]
+FISH4 = ["napoleon", "gourami", "redtail", "rainbow", "pike", "bluediscus"]
+
 # Taille cible en pixels logiques : ("w", largeur) ou ("h", hauteur), une ou plusieurs variantes.
 SIZES = {
     "clown": [("w", 34)], "tang": [("w", 38)], "ytang": [("w", 34)], "idol": [("w", 36)],
@@ -132,17 +136,51 @@ SIZES = {
     "boot": [("h", 30), ("h", 22)],
     "shellhouse": [("h", 40), ("h", 30)],
     "treasure": [("h", 30), ("h", 22)],
+    "napoleon": [("w", 42)], "gourami": [("w", 36)], "redtail": [("w", 38)], "rainbow": [("w", 36)],
+    "pike": [("w", 50)], "bluediscus": [("w", 34)],
     "reef": [("h", 96), ("h", 68), ("h", 46)],
+    "ui_pointer": [("h", 18)],
+    "ui_eraser": [("h", 18)],
+    "ui_pellets": [("h", 18)],
+    "ui_trash": [("h", 18)],
+    "ui_pause": [("h", 18)],
+    "ui_play": [("h", 18)],
+    "ui_plus": [("h", 18)],
+    "ui_dice": [("h", 18)],
+    "ui_gear": [("h", 18)],
+    "ui_jar": [("h", 18)],
+    "ui_wand": [("h", 18)],
+    "ui_eye": [("h", 18)],
+    "ruins": [("h", 96), ("h", 68), ("h", 46)],
+    "castle": [("h", 96), ("h", 68), ("h", 46)],
+    "statues": [("h", 96), ("h", 68), ("h", 46)],
+    "candy": [("h", 96), ("h", 68), ("h", 46)],
+    "shrine": [("h", 96), ("h", 68), ("h", 46)],
 }
 # Parties retirees du dessin : (u0, u1, v0, v1) en fraction de la largeur / hauteur du sprite.
 ERASE = {
     "whale": [(0.45, 0.88, 0.0, 0.279)],                          # jet d'eau
     "diver": [(0.79, 1.0, 0.0, 0.185), (0.83, 1.0, 0.0, 0.21), (0.865, 1.0, 0.0, 0.33)],   # bulles au-dessus de la tete
 }
+# Parties claires retirees par leur couleur : (u0, u1, v0, v1, seuils R, G, B). Tout pixel de la
+# zone plus clair que les trois seuils est efface. Sert a oter la lune du decor "shrine",
+# que le moteur redessine une seule fois.
+ERASE_BRIGHT = {
+    "shrine": [(0.43, 0.57, 0.0, 0.42, 190, 135, 125)],
+}
+# Sprites presents sur une planche mais non repris dans l'atlas (doublons).
+SKIP = {"tusk", "emperor", "_dup1", "_dup2", "_extra"}
 COLORS = 28
 INK = np.array([14, 18, 46], dtype=np.float32)
-WATER_HAZE = np.array([77, 171, 247], dtype=np.float32)
-BACKDROPS = {"reef"}
+# Decors lointains : (couleur de brume, dose de brume, retrait de la teinte mauve)
+BACKDROPS = {
+    "reef": ((77, 171, 247), 0.28, True),
+    "ruins": ((246, 140, 84), 0.2, False),
+    "castle": ((30, 44, 150), 0.18, False),
+    "statues": ((40, 160, 95), 0.18, True),
+    "candy": ((225, 150, 235), 0.14, False),
+    "shrine": ((185, 45, 55), 0.15, False),
+}
 
 
 def load(name, key_magenta):
@@ -152,8 +190,10 @@ def load(name, key_magenta):
         #  - le fond relie aux bords de l'image (tolerance large), par propagation ;
         #  - les trous enfermes (anse, arche...) seulement s'ils sont magenta presque pur.
         # Les couleurs violettes ou roses a l'interieur d'un sprite sont ainsi conservees.
-        r, g, b = a[..., 0], a[..., 1], a[..., 2]
-        dist = np.sqrt((r - 255) ** 2 + g ** 2 + (b - 255) ** 2)
+        # la couleur de fond est lue en haut de la planche (magenta en general, vert pour
+        # les planches dont le dessin est rose ou violet)
+        key = np.median(a[:6, :, :3].reshape(-1, 3), axis=0)
+        dist = np.sqrt(((a[..., :3] - key) ** 2).sum(axis=2))
         cand = dist < 100
         bg = np.zeros_like(cand)
         bg[0, :] = cand[0, :]
@@ -225,7 +265,7 @@ def split(a, rows, cols):
     return cells
 
 
-def pixelize(crop, mode, size, backdrop=False):
+def pixelize(crop, mode, size, backdrop=None):
     h, w = crop.shape[:2]
     if mode == "w":
         tw, th = size, max(1, round(h * size / w))
@@ -274,9 +314,11 @@ def pixelize(crop, mode, size, backdrop=False):
     lum = rgb.mean(axis=2)
     if backdrop:
         # decor lointain : pas de contour sombre, et une brume bleue qui le repousse au fond
-        # retire la teinte mauve laissee par le fond magenta de la planche : tout reste bleu
-        rgb[..., 0] = np.minimum(rgb[..., 0], rgb[..., 1] * 0.9)
-        rgb = rgb * 0.72 + WATER_HAZE * 0.28
+        haze, dose, demauve = backdrop
+        if demauve:
+            # retire la teinte mauve laissee par le fond magenta de la planche : tout reste bleu
+            rgb[..., 0] = np.minimum(rgb[..., 0], rgb[..., 1] * 0.9)
+        rgb = rgb * (1 - dose) + np.array(haze, dtype=np.float32) * dose
     else:
         k = np.where(edge, np.where(lum < 90, 0.85, 0.6), 0)[..., None]
         rgb = rgb * (1 - k) + INK * k
@@ -290,17 +332,26 @@ def main():
     sprites = {}
     sheets = [("fish.png", None, 4, 4, FISH), ("creatures.png", None, 3, 4, CREATURES), ("decor.png", None, 4, 4, DECOR),
               ("fish2.png", None, 4, 4, FISH2), ("creatures2.png", None, 3, 4, CREATURES2), ("decor2.png", None, 4, 4, DECOR2),
-              ("reef.png", None, 1, 1, ["reef"]),
+              ("reef.png", None, 1, 1, ["reef"]), ("ruins.png", None, 1, 1, ["ruins"]), ("castle.png", None, 1, 1, ["castle"]),
+              ("statues.png", None, 1, 1, ["statues"]), ("candy.png", None, 1, 1, ["candy"]), ("shrine.png", None, 1, 1, ["shrine"]),
+              ("ui.png", None, 3, 4, UI), ("fish4.png", None, 2, 3, FISH4),
               ("fish3.png", None, 4, 4, FISH3), ("plants3.png", None, 4, 4, PLANTS3), ("decor3.png", None, 4, 4, DECOR3)]
     for fname, key, rows, cols, names in sheets:
         cells = split(load(fname, key), rows, cols)
         for name, crop in zip(names, cells):
+            if name in SKIP:
+                continue
             # zones effacees du dessin d'origine (la taille du sprite ne change pas)
             for (u0, u1, v0, v1) in ERASE.get(name, []):
                 ch, cw = crop.shape[:2]
                 crop[int(v0 * ch):int(v1 * ch), int(u0 * cw):int(u1 * cw), 3] = 0
+            for (u0, u1, v0, v1, tr, tg, tb) in ERASE_BRIGHT.get(name, []):
+                ch, cw = crop.shape[:2]
+                zone = crop[int(v0 * ch):int(v1 * ch), int(u0 * cw):int(u1 * cw)]
+                bright = (zone[..., 0] > tr) & (zone[..., 1] > tg) & (zone[..., 2] > tb)
+                zone[..., 3] = np.where(bright, 0, zone[..., 3])
             for i, (mode, size) in enumerate(SIZES[name]):
-                sprites[name if len(SIZES[name]) == 1 else "%s_%d" % (name, i)] = pixelize(crop, mode, size, name in BACKDROPS)
+                sprites[name if len(SIZES[name]) == 1 else "%s_%d" % (name, i)] = pixelize(crop, mode, size, BACKDROPS.get(name))
 
     # rangement en etageres
     aw = 512

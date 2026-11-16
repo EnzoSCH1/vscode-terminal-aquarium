@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="icon.png" width="128" height="128" alt="Icône de Terminal Pixel Aquarium">
+![Icône de Terminal Pixel Aquarium](icon.png)
 
 # Terminal Pixel Aquarium
 
@@ -13,21 +13,35 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 [![Licence : MIT](https://img.shields.io/badge/licence-MIT-3ddc97)](LICENSE)
 [![Marketplace](https://img.shields.io/badge/Marketplace-installer-ff7a59)](https://marketplace.visualstudio.com/items?itemName=EnzoSCH1.vscode-terminal-aquarium)
 
+[Signaler un bug](https://github.com/EnzoSCH1/vscode-terminal-aquarium/issues/new?title=Bug%20report) · [Proposer une fonctionnalité](https://github.com/EnzoSCH1/vscode-terminal-aquarium/issues/new?title=Feature%20request)
+
 [English](README.md) · **Français**
 
-<img src="images/demo.gif" alt="Des poissons nagent derrière un terminal et se jettent sur la nourriture" width="100%">
+![Des poissons nagent derrière un terminal et se jettent sur la nourriture](images/demo.gif)
 
 </div>
 
 ---
 
+## Sommaire
+
+- [Pourquoi vous allez l'aimer](#pourquoi-vous-allez-laimer)
+- [Captures d'écran](#captures-décran)
+- [Les habitants](#les-habitants)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [À savoir](#à-savoir)
+- [Questions fréquentes](#questions-fréquentes)
+- [Pour contribuer](#pour-contribuer)
+- [Licence](#licence)
+
 ## Pourquoi vous allez l'aimer
 
 | | |
 |---|---|
-| 🐠 **46 espèces de poissons** | Poisson-clown, chirurgien bleu, combattant, poisson rouge, koï, poisson-lion, baudroie, poisson-lune… chacun avec sa queue animée. Néons et sardines nagent en banc, les clowns restent près de leur anémone. |
-| 🐙 **24 autres animaux** | Hippocampe, tortue, méduse, pieuvre, axolotl, manchot, dauphin, narval, bébé baleine, bébé orque, bébé phoque, un plongeur qui fait des bulles, crabes, homard, limace de mer… et un bébé requin qui fait fuir tout le monde. |
-| 🌿 **67 décors** | 13 plantes qui ondulent, 18 coraux, épave, phare, statue moaï, portail torii, volcan, sous-marin jaune, tour en ruine, château de sable, maison champignon, coffre au trésor, canon, soucoupe volante… |
+| 🐠 **50 espèces de poissons** | Poisson-clown, chirurgien bleu, combattant, poisson rouge, koï, poisson-lion, baudroie, poisson-lune… chacun avec sa queue animée. Néons et sardines nagent en banc, les clowns restent près de leur anémone. |
+| 🐙 **24 autres animaux** | Hippocampe, tortue, méduse, pieuvre, axolotl, manchot, dauphin, narval, bébé baleine, bébé orque, bébé phoque, calamar, seiche, raie manta, oursin, bernard-l'ermite, plongeur… et un bébé requin qui fait fuir tout le monde. |
+| 🌿 **67 décors** | 13 plantes qui ondulent, 18 coraux, épave, phare, statue moaï, portail torii, volcan, sous-marin jaune, tour en ruine, château de sable, maison champignon, coffre au trésor, canon, soucoupe volante, pont de pierre, totem tiki, maison coquillage, barre de navire, lanterne, rocher crâne et plus encore. |
 | 🍤 **Il réagit à ce que vous faites** | Appuyez sur <kbd>Entrée</kbd> dans le terminal : de la nourriture tombe. Les poissons se précipitent, les animaux du fond ramassent ce qui atteint le sable, et tout le monde s'écarte quand le curseur approche. |
 | 🎲 **Jamais le même aquarium** | Chaque nouveau décor tire un mélange différent de grands décors, de coraux, de poissons et d'animaux. Ou composez le vôtre, clic après clic. |
 | ⌨️ **Il ne gêne pas** | L'aquarium est une couche transparente : le texte du terminal reste net et entièrement utilisable. Un clic suffit pour le masquer. |
@@ -42,14 +56,14 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 
 ![L'aquarium en couleurs pleines](images/screenshot-colors.png)
 
-**Menu compact** — tout est derrière le petit bouton 🐠 dans le coin.
+**Menu compact** — tout est derrière le petit bouton **⋯** dans le coin.
 
 ![Le menu de l'aquarium](images/screenshot-menu.png)
 
 ## Les habitants
 
 <details open>
-<summary><b>Poissons</b> (46)</summary>
+<summary><b>Poissons</b> (50)</summary>
 
 ![Toutes les espèces de poissons](images/gallery-fish.png)
 
@@ -75,26 +89,38 @@ Les poissons nagent derrière vos commandes, mangent quand vous appuyez sur <kbd
 2. Acceptez la proposition d'activation, ou ouvrez la palette de commandes (<kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>P</kbd> / <kbd>Cmd</kbd>+<kbd>Maj</kbd>+<kbd>P</kbd>) et lancez **Terminal Aquarium: Enable / Update Background**.
 3. Rechargez la fenêtre quand l'extension le demande. Si VS Code est installé pour tous les utilisateurs, il faudra peut-être le lancer en administrateur pour cette étape.
 
-Relancez la même commande après chaque mise à jour de l'extension, et après chaque mise à jour de VS Code (les mises à jour restaurent les fichiers d'origine).
+Ensuite, il n'y a rien à retenir : quand l'extension ou VS Code est mis à jour, l'aquarium est rafraîchi automatiquement au démarrage suivant et un bouton **Reload window** vous est proposé.
 
 ## Utilisation
 
-Ouvrez le panneau du bas et cliquez sur le bouton **🐠** dans son coin inférieur droit.
+Ouvrez le panneau du bas et cliquez sur le petit bouton **⋯** dans son coin inférieur droit. Un clic en dehors du menu le referme.
 
-| Commande | Effet |
+Le menu est en anglais ; les intitulés ci-dessous sont ceux affichés à l'écran.
+
+### Commandes principales
+
+| | Commande | Effet |
+|:---:|---|---|
+| <img src="images/icons/pointer.png" height="22" alt="Curseur"> | **Normal mode** | Les clics vont au terminal comme d'habitude. |
+| <img src="images/icons/eraser.png" height="22" alt="Gomme"> | **Remove** | Cliquez sur un élément de l'aquarium pour le retirer. |
+| <img src="images/icons/pellets.png" height="22" alt="Granulés"> | **Drop food** | Cliquez n'importe où dans l'aquarium pour y lâcher de la nourriture. |
+| <img src="images/icons/trash.png" height="22" alt="Poubelle"> | **Clear all** | Vide l'aquarium. |
+| <img src="images/icons/pause.png" height="22" alt="Pause"> | **Hide / show** | Masque l'aquarium, ou le réaffiche. |
+| <img src="images/icons/jar.png" height="22" alt="Pot de nourriture"> | **Feed** | Nourrit tout l'aquarium d'un coup. |
+| <img src="images/icons/plus.png" height="22" alt="Plus"> | **Item to place** | Choisissez un poisson, un animal, une plante, un corail ou un décor dans la liste, puis cliquez dans l'aquarium pour le placer. |
+| <img src="images/icons/dice.png" height="22" alt="Dé"> | **New scene** | Génère un nouvel aquarium au hasard. |
+| <img src="images/icons/gear.png" height="22" alt="Engrenage"> | **Settings** | Affiche ou masque les réglages ci-dessous. |
+
+### Réglages
+
+| Réglage | Effet |
 |---|---|
-| ⌨️ | Mode normal. Les clics vont au terminal comme d'habitude. |
-| ➕ + liste | Choisissez un poisson, un animal, une plante, un corail ou un décor dans la liste, puis cliquez dans l'aquarium pour le placer. |
-| 🧽 | Cliquez sur un élément pour le retirer. |
-| 🍤 | Cliquez n'importe où pour y lâcher de la nourriture. |
-| Sol | Sable, pierre grise, volcanique ou mousse verte. |
-| Rendu | *Lumineux* garde le texte du terminal net (par défaut). *Couleurs pleines* affiche l'aquarium en pleine couleur. |
-| Taille | `x0.5` petit, `x1` normal, `x2` gros pixels. |
-| Curseur | Opacité de l'aquarium. |
-| Entrée / Souris / Rayons | Active ou non la nourriture sur <kbd>Entrée</kbd>, la fuite devant la souris et les rayons de soleil. |
-| 🍤 Nourrir | Nourrit tout l'aquarium. |
-| 🎲 Nouveau décor | Génère un nouvel aquarium au hasard. |
-| 🧹 / ⏸ | Vide l'aquarium / masque ou affiche l'aquarium. |
+| **Theme** | Six ambiances : Lagoon (récif turquoise), Sunset (eau orangée, ruines antiques), Night (bleu profond, château à l’horizon), Emerald (eau verte, statues moussues), Pink dream (châteaux de sable et coquillages pastel) et Red temple (eau pourpre, torii, pagode et lune). |
+| **Ground** | Sable, pierre grise, volcanique ou mousse verte. |
+| **Look** | *Soft* garde le texte du terminal net (par défaut). *Full color* affiche l'aquarium en pleine couleur. |
+| **Size** | `x0.5` petit, `x1` normal, `x2` gros pixels. |
+| **Opacity** | Règle la visibilité de l'aquarium. |
+| **Enter / Mouse / Rays** | Active ou non : la nourriture sur <kbd>Entrée</kbd>, la fuite des poissons devant la souris, et les rayons de lumière. |
 
 Appuyez sur <kbd>Échap</kbd> pour quitter l'outil placer, retirer ou nourrir. Le décor et les réglages sont enregistrés localement et retrouvés à la prochaine ouverture de VS Code.
 
@@ -112,19 +138,19 @@ Appuyez sur <kbd>Échap</kbd> pour quitter l'outil placer, retirer ou nourrir. L
 
 - VS Code peut afficher un avis **« installation corrompue »** ou **[Non pris en charge]**. C'est la conséquence attendue de cette modification.
 - Retirer la CSP **affaiblit une protection de sécurité du Workbench** tant que l'aquarium est activé. N'utilisez l'extension que si vous comprenez et acceptez cela.
-- **Disable Background** retire le script de l'aquarium mais ne remet pas la balise CSP. Pour retrouver VS Code exactement comme à l'origine, désactivez l'aquarium puis mettez à jour ou réinstallez VS Code.
-- Une mise à jour de VS Code écrase la modification. Il suffit de relancer la commande d'activation.
+- L'extension garde une copie du fichier d'origine avant de le modifier. **Disable Background** remet cette copie en place : VS Code revient exactement à son état initial, balise CSP comprise.
+- Une mise à jour de VS Code écrase la modification. L'extension le remarque au démarrage suivant, remet l'aquarium toute seule et propose de recharger la fenêtre.
 
 ## Questions fréquentes
 
 **Mon terminal reste-t-il utilisable ?**
-Oui. En mode normal, l'aquarium ignore complètement la souris et le clavier.
+Oui. En **Normal mode**, l'aquarium ne capture ni les clics ni la saisie au clavier. Les poissons peuvent tout de même réagir à la souris et la touche <kbd>Entrée</kbd> les nourrit par défaut ; ces deux comportements peuvent être désactivés dans les réglages.
 
 **Le texte est difficile à lire avec mon thème.**
 Baissez l'opacité avec le curseur. Le rendu par défaut est pensé pour les thèmes sombres ; avec un thème clair, essayez les couleurs pleines avec une opacité faible.
 
 **L'aquarium a disparu après une mise à jour.**
-Relancez **Terminal Aquarium: Enable / Update Background**.
+Redémarrez VS Code : l'extension le remet toute seule et propose de recharger la fenêtre. Si rien ne se passe, lancez **Terminal Aquarium: Enable / Update Background**.
 
 **Peut-on le mettre en pause ?**
 Oui, le bouton ⏸ masque l'aquarium et arrête son dessin.

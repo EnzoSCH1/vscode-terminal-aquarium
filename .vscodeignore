@@ -1,6 +1,8 @@
 art/**
 tools/**
-images/**
 *.vsix
 .git/**
 .gitignore
+.agents/**
+.claude/**
+skills-lock.json

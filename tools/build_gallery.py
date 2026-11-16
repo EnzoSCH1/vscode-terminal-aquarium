@@ -22,8 +22,9 @@ FISH = ["clown", "tang", "ytang", "idol", "butterfly", "neon", "gramma", "snappe
         "koi", "puffer", "grouper", "angel", "discus", "wrasse", "mandarin", "lion",
         "betta", "goldfish", "guppy", "scalare", "parrot", "trigger", "boxfish", "cardinal",
         "flameangel", "cory", "angler", "piranha", "swordtail", "mola", "seadragon", "sardine",
-        "cowfish", "emperor", "clowntrigger", "powdertang", "foxface", "pajama", "longnose", "chromis",
-        "tusk", "arowana", "tigerbarb", "molly", "ram", "damsel"]
+        "cowfish", "clowntrigger", "powdertang", "foxface", "pajama", "longnose", "chromis",
+        "arowana", "tigerbarb", "molly", "ram", "damsel",
+        "napoleon", "gourami", "redtail", "rainbow", "pike", "bluediscus"]
 ANIMALS = ["seahorse", "turtle", "jelly", "octopus", "squid", "cuttlefish", "axolotl", "penguin",
            "ray", "manta", "diver", "seal", "dolphin", "narwhal", "orca", "whale", "shark",
            "crab", "hermit", "lobster", "shrimp", "snail", "nudibranch", "urchin"]
@@ -87,8 +88,19 @@ def sheet(img, rects, names, width, fname):
     print(fname, out.size)
 
 
+def icons(img, rects):
+    """Icones du menu, agrandies x2, pour le tableau d'utilisation du README."""
+    out_dir = os.path.join(OUT, "icons")
+    os.makedirs(out_dir, exist_ok=True)
+    for name in sorted(n for n in rects if n.startswith("ui_")):
+        s = sprite(img, rects, name)
+        s.resize((s.width * 2, s.height * 2), Image.NEAREST).save(os.path.join(out_dir, name[3:] + ".png"), optimize=True)
+    print("icons", len([n for n in rects if n.startswith("ui_")]))
+
+
 def main():
     img, rects = load_atlas()
+    icons(img, rects)
     sheet(img, rects, FISH, 330, "gallery-fish.png")
     sheet(img, rects, ANIMALS, 330, "gallery-animals.png")
     sheet(img, rects, DECOR, 330, "gallery-decor.png")

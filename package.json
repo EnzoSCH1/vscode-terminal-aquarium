@@ -1,7 +1,7 @@
 {
   "name": "vscode-terminal-aquarium",
   "displayName": "vscode-Pixel-Aquarium",
-  "description": "An interactive 2D pixel-art aquarium—with fish, plants, rocks, and a technical substrate—right in the background of the VS Code terminal.",
+  "description": "An interactive 2D pixel-art aquarium of the VS Code terminal.",
   "version": "1.2.0",
   "publisher": "EnzoSCH1",
   "icon": "icon.png",

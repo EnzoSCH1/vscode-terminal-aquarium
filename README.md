@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="icon.png" width="128" height="128" alt="Terminal Pixel Aquarium icon">
+![Terminal Pixel Aquarium icon](icon.png)
 
 # Terminal Pixel Aquarium
 
@@ -13,21 +13,35 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 [![License: MIT](https://img.shields.io/badge/license-MIT-3ddc97)](LICENSE)
 [![Marketplace](https://img.shields.io/badge/Marketplace-install-ff7a59)](https://marketplace.visualstudio.com/items?itemName=EnzoSCH1.vscode-terminal-aquarium)
 
+[Report a Bug](https://github.com/EnzoSCH1/vscode-terminal-aquarium/issues/new?title=Bug%20report) · [Request a feature](https://github.com/EnzoSCH1/vscode-terminal-aquarium/issues/new?title=Feature%20request)
+
 **English** · [Français](README.fr.md)
 
-<img src="images/demo.gif" alt="Fish swimming behind a terminal and rushing to the food" width="100%">
+![Fish swimming behind a terminal and rushing to the food](images/demo.gif)
 
 </div>
 
 ---
 
+## Table of Contents
+
+- [Why you'll like it](#why-youll-like-it)
+- [Screenshots](#screenshots)
+- [Meet the residents](#meet-the-residents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Good to know](#good-to-know)
+- [FAQ](#faq)
+- [For contributors](#for-contributors)
+- [License](#license)
+
 ## Why you'll like it
 
 | | |
 |---|---|
-| 🐠 **46 fish species** | Clownfish, blue tang, betta, goldfish, koi, lionfish, anglerfish, sunfish… each with an animated tail. Neon tetras and sardines swim in schools, clownfish stay close to their anemone. |
-| 🐙 **24 other animals** | Seahorse, turtle, jellyfish, octopus, axolotl, penguin, dolphin, narwhal, baby whale, baby orca, baby seal, a scuba diver blowing bubbles, crabs, lobster, sea slug… and a baby shark that scares everyone else. |
-| 🌿 **67 decorations** | 13 swaying plants, 18 corals, shipwreck, lighthouse, moai statue, torii gate, volcano, yellow submarine, castle tower, sandcastle, mushroom house, treasure chest, cannon, flying saucer… |
+| 🐠 **50 fish species** | Clownfish, blue tang, betta, goldfish, koi, lionfish, anglerfish, sunfish… each with an animated tail. Neon tetras and sardines swim in schools, clownfish stay close to their anemone. |
+| 🐙 **24 other animals** | Seahorse, turtle, jellyfish, octopus, axolotl, penguin, dolphin, narwhal, baby whale, baby orca, baby seal, squid, cuttlefish, manta ray, sea urchin, hermit crab, a scuba diver blowing bubbles… and a baby shark that scares everyone else. |
+| 🌿 **67 decorations** | 13 swaying plants, 18 corals, shipwreck, lighthouse, moai statue, torii gate, volcano, yellow submarine, ruined tower, sandcastle, mushroom house, treasure chest, cannon, flying saucer, stone bridge, tiki totem, shell house, ship's wheel, lantern, skull rock and more. |
 | 🍤 **It reacts to you** | Press <kbd>Enter</kbd> in the terminal and food drops in. Fish race for it, bottom-dwellers pick up what reaches the sand, and everyone scatters when your cursor gets close. |
 | 🎲 **Never the same tank** | Every new scene draws a different mix of landmarks, corals, fish and animals. Or build your own, one click at a time. |
 | ⌨️ **Stays out of your way** | The aquarium is a see-through layer: your terminal text stays crisp and fully usable. Hide it in one click. |
@@ -42,14 +56,14 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 
 ![The aquarium in full-color mode](images/screenshot-colors.png)
 
-**Compact menu** — everything is behind the small 🐠 button in the corner.
+**Compact menu** — everything is behind the small **⋯** button in the corner.
 
 ![The aquarium menu](images/screenshot-menu.png)
 
 ## Meet the residents
 
 <details open>
-<summary><b>Fish</b> (46)</summary>
+<summary><b>Fish</b> (50)</summary>
 
 ![All fish species](images/gallery-fish.png)
 
@@ -75,28 +89,38 @@ Fish swim behind your commands, eat when you press <kbd>Enter</kbd>, and dart aw
 2. Accept the prompt to enable the aquarium, or open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> / <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>) and run **Terminal Aquarium: Enable / Update Background**.
 3. Reload the window when asked. If VS Code is installed system-wide, you may need to start it as administrator for this step.
 
-Run the same command again after each extension update, and after each VS Code update (updates restore the original files).
+After that, there is nothing to remember: when the extension or VS Code is updated, the aquarium is refreshed automatically at the next start and you are offered a **Reload window** button.
 
 ## Usage
 
-Open the bottom panel and click the **🐠** button in its bottom-right corner.
+Open the bottom panel and click the small **⋯** button in its bottom-right corner. Click anywhere outside the menu to close it.
 
-| Control | What it does |
+### Main controls
+
+| | Control | What it does |
+|:---:|---|---|
+| <img src="images/icons/pointer.png" height="22" alt="Pointer"> | **Normal mode** | Clicks go to the terminal as usual. |
+| <img src="images/icons/eraser.png" height="22" alt="Eraser"> | **Remove** | Click an item in the tank to remove it. |
+| <img src="images/icons/pellets.png" height="22" alt="Food pellets"> | **Drop food** | Click anywhere in the tank to drop food there. |
+| <img src="images/icons/trash.png" height="22" alt="Trash bin"> | **Clear all** | Empty the tank. |
+| <img src="images/icons/pause.png" height="22" alt="Pause"> | **Hide / show** | Hide the aquarium, or bring it back. |
+| <img src="images/icons/jar.png" height="22" alt="Food jar"> | **Feed** | Feed the whole tank at once. |
+| <img src="images/icons/plus.png" height="22" alt="Plus"> | **Item list + place** | Pick a fish, animal, plant, coral or decor item in the list, then click in the tank to place it. |
+| <img src="images/icons/dice.png" height="22" alt="Dice"> | **New scene** | Make a brand-new random aquarium. |
+| <img src="images/icons/gear.png" height="22" alt="Gear"> | **Settings** | Show or hide the settings below. |
+
+### Settings
+
+| Setting | What it does |
 |---|---|
-| ⌨️ | Normal mode. Clicks go to the terminal as usual. |
-| ➕ + list | Pick a fish, animal, plant, coral or decoration in the list, then click in the tank to place it. |
-| 🧽 | Click an element to remove it. |
-| 🍤 | Click anywhere to drop food there. |
-| Substrate | Sand, grey stone, volcanic or green moss. |
-| Render | *Lumineux* keeps terminal text sharp (default). *Couleurs pleines* shows the tank in full color. |
-| Size | `x0.5` small, `x1` normal, `x2` big chunky pixels. |
-| Slider | Opacity of the aquarium. |
-| Entrée / Souris / Rayons | Toggle feeding on <kbd>Enter</kbd>, fleeing from the mouse, and sun rays. |
-| 🍤 Nourrir | Feed the whole tank. |
-| 🎲 Nouveau décor | Generate a brand-new random aquarium. |
-| 🧹 / ⏸ | Empty the tank / hide or show the aquarium. |
+| **Theme** | Six moods: Lagoon (turquoise reef), Sunset (orange water, ancient ruins), Night (deep blue, castle on the horizon), Emerald (green water, mossy statues), Pink dream (pastel sandcastles and shells) and Red temple (crimson water, torii gate, pagoda and moon). |
+| **Ground** | Sand, grey stone, volcanic or green moss. |
+| **Look** | *Soft* keeps terminal text sharp (default). *Full color* shows the tank in full color. |
+| **Size** | `x0.5` small, `x1` normal, `x2` big chunky pixels. |
+| **Opacity** | How visible the aquarium is. |
+| **Enter / Mouse / Rays** | Turn on or off: feeding when you press <kbd>Enter</kbd>, fish swimming away from the mouse, and light rays. |
 
-Press <kbd>Esc</kbd> to leave the place, remove or feed tool. Your scene and settings are saved locally and restored the next time you open VS Code.
+Press <kbd>Esc</kbd> to leave the place, remove or drop-food tool. Your scene and settings are saved locally and restored the next time you open VS Code.
 
 ### Commands
 
@@ -112,19 +136,19 @@ Press <kbd>Esc</kbd> to leave the place, remove or feed tool. Your scene and set
 
 - VS Code may show an **"installation appears to be corrupt"** or **[Unsupported]** notice. That is the expected consequence of the patch.
 - Removing the CSP **weakens a Workbench security protection** while the aquarium is enabled. Use the extension only if you understand and accept this.
-- **Disable Background** removes the aquarium script but does not put the CSP tag back. To restore VS Code exactly as shipped, disable the aquarium and then update or reinstall VS Code.
-- A VS Code update overwrites the patch. Just run the enable command again.
+- The extension keeps a copy of the original file before changing it. **Disable Background** puts that copy back, so VS Code returns exactly to how it was, CSP tag included.
+- A VS Code update overwrites the patch. The extension notices at the next start, puts the aquarium back by itself and offers to reload the window.
 
 ## FAQ
 
 **Is my terminal still usable?**
-Yes. In normal mode the aquarium ignores the mouse and keyboard entirely.
+Yes. In **Mode normal**, the aquarium does not capture clicks or typing. The fish can still react to the mouse, and <kbd>Enter</kbd> feeds them by default; both behaviors can be toggled in the settings.
 
 **The text is hard to read on my theme.**
 Lower the opacity with the slider. The default render mode is designed for dark themes; on a light theme, try the full-color mode with a low opacity.
 
 **The aquarium disappeared after an update.**
-Run **Terminal Aquarium: Enable / Update Background** again.
+Restart VS Code: the extension puts it back by itself and offers to reload the window. If nothing happens, run **Terminal Aquarium: Enable / Update Background**.
 
 **Can I pause it?**
 Yes, the ⏸ button hides the aquarium and stops drawing it.
